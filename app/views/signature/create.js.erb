@@ -1,0 +1,10 @@
+var clientId = '<%= Rails.application.credentials.dig(:hello_sign, :client_id) %>';
+HelloSign.init(clientId);
+var signUrl = '<%= @sign_url %>';
+HelloSign.open({
+    url: signUrl,
+    allowCancel: true,
+    messageListener: function(eventData) {
+        // Will get the signatureID and event name on sibmitting the signature, can customize from here.
+    }
+});
